@@ -40,4 +40,9 @@ public class GestionCliente
         }
         _clienteActivo = null;
     }
+
+    public void SolicitarViaje() {
+        ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
+        
+    }
 }
