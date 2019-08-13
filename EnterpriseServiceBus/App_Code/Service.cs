@@ -21,5 +21,10 @@ public class Service : System.Web.Services.WebService
     public string HelloWorld() {
         return "Hola a todos";
     }
-    
+
+    [WebMethod]
+    public string SolicitudViajeCliente(int zona)
+    {
+        return "Hola a todos";
+    }
 }
