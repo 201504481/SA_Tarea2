@@ -50,7 +50,7 @@ public class GestionCliente
     *             *zonaActual    --> entero que contiene la zona actual del usuario que intenta registrarse 
     * Verifica si el usuario actual esta registrado, por motivos de flujo de la aplicacion si no existe lo inserta
     */
-    public void IngresoRegistroCliente(String nombreUsuario, int zonaActual)
+    public Boolean IngresoRegistroCliente(String nombreUsuario, int zonaActual)
     {
         // Ciclo iterador por cada cliente en la lista de clientes
         foreach(EntidadCliente cliente in _listaClientes)
@@ -63,7 +63,7 @@ public class GestionCliente
                 _clienteActivo = cliente;
                 _clienteActivo.SetZonaActual(zonaActual);
                 // Retorno para finalizar el flujo del metodo, ingresando el usuario 
-                return;
+                return true;
             }
         }
         // Registro del usuario debido a no encontrar ninguno similar
@@ -71,5 +71,6 @@ public class GestionCliente
         _listaClientes.AddLast(nuevo);
         // Actualizacion del cliente con sesion iniciada 
         _clienteActivo = nuevo;
+        return false;
     }
 }

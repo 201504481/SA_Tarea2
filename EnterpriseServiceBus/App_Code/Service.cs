@@ -15,6 +15,8 @@ public class Service : System.Web.Services.WebService
     ServidorRastreo.ServiceSoapClient _rastreo = new ServidorRastreo.ServiceSoapClient();
     // Instancia de servidor de pilotos
     ServidorPiloto.ServiceSoapClient _pilotos = new ServidorPiloto.ServiceSoapClient();
+    // Instancia de servidor de clientes
+    ServidorCliente.ServiceSoapClient _clientes = new ServidorCliente.ServiceSoapClient();
 
     /*
     * Metodo del servidor web que recibe la solicitud de viaje de un cliente
@@ -48,5 +50,16 @@ public class Service : System.Web.Services.WebService
     public void OcuparPiloto(int codigoPiloto) 
     {
         _pilotos.OcuparPiloto(codigoPiloto);
+    }
+
+    /*
+    * Metodo del servidor web que recibe la solicitud el ingreso de un cliente
+    * Parametros: *nombreUsuario --> cadena que contiene el nombre del usuario
+    *             *zonaActual    --> entero que contiene la zona actual del usuario que intenta registrarse 
+    */
+    [WebMethod]
+    public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
+    {
+        return _clientes.IngresoCliente(nombreUsuario, zonaActual);
     }
 }

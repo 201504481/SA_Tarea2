@@ -11,17 +11,23 @@ using System.Web.Services;
 
 public class Service : System.Web.Services.WebService
 {
-    public Service () {
+    // Instancia de la gestion de clientes utilizada para toda la sesion.
+    public static GestionCliente _clientes = new GestionCliente();
 
+    public Service () {
         //Elimine la marca de comentario de la línea siguiente si utiliza los componentes diseñados 
         //InitializeComponent(); 
     }
 
+    /*
+    * Metodo del servidor web que recibe la solicitud el ingreso de un cliente
+    * Parametros: *nombreUsuario --> cadena que contiene el nombre del usuario
+    *             *zonaActual    --> entero que contiene la zona actual del usuario que intenta registrarse 
+    */
     [WebMethod]
-    public string HelloWorld() {
-        GestionCliente a = new GestionCliente();
-        a.SolicitarViaje();
-        return "Hola a todos";
+    public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
+    {
+        return _clientes.IngresoRegistroCliente(nombreUsuario, zonaActual);
     }
     
 }
