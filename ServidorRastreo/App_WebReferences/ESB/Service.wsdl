@@ -2,34 +2,96 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
+      <s:element name="SolicitudViajeCliente">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="zona" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SolicitudViajeClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitudViajeClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitudPilotosDisponibles">
+        <s:complexType />
+      </s:element>
+      <s:element name="SolicitudPilotosDisponiblesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitudPilotosDisponiblesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OcuparPiloto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoPiloto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OcuparPilotoResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  <wsdl:message name="SolicitudViajeClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudViajeCliente" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  <wsdl:message name="SolicitudViajeClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudViajeClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudPilotosDisponiblesSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitudPilotosDisponibles" />
+  </wsdl:message>
+  <wsdl:message name="SolicitudPilotosDisponiblesSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitudPilotosDisponiblesResponse" />
+  </wsdl:message>
+  <wsdl:message name="OcuparPilotoSoapIn">
+    <wsdl:part name="parameters" element="tns:OcuparPiloto" />
+  </wsdl:message>
+  <wsdl:message name="OcuparPilotoSoapOut">
+    <wsdl:part name="parameters" element="tns:OcuparPilotoResponse" />
   </wsdl:message>
   <wsdl:portType name="ServiceSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
+    <wsdl:operation name="SolicitudViajeCliente">
+      <wsdl:input message="tns:SolicitudViajeClienteSoapIn" />
+      <wsdl:output message="tns:SolicitudViajeClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudPilotosDisponibles">
+      <wsdl:input message="tns:SolicitudPilotosDisponiblesSoapIn" />
+      <wsdl:output message="tns:SolicitudPilotosDisponiblesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OcuparPiloto">
+      <wsdl:input message="tns:OcuparPilotoSoapIn" />
+      <wsdl:output message="tns:OcuparPilotoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="SolicitudViajeCliente">
+      <soap:operation soapAction="http://tempuri.org/SolicitudViajeCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudPilotosDisponibles">
+      <soap:operation soapAction="http://tempuri.org/SolicitudPilotosDisponibles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OcuparPiloto">
+      <soap:operation soapAction="http://tempuri.org/OcuparPiloto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -40,8 +102,26 @@
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="SolicitudViajeCliente">
+      <soap12:operation soapAction="http://tempuri.org/SolicitudViajeCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitudPilotosDisponibles">
+      <soap12:operation soapAction="http://tempuri.org/SolicitudPilotosDisponibles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OcuparPiloto">
+      <soap12:operation soapAction="http://tempuri.org/OcuparPiloto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

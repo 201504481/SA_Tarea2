@@ -11,15 +11,29 @@ using System.Web.Services;
 
 public class Service : System.Web.Services.WebService
 {
+    GestionPiloto _pilotosActuales = new GestionPiloto();
+
     public Service () {
-
-        //Elimine la marca de comentario de la línea siguiente si utiliza los componentes diseñados 
-        //InitializeComponent(); 
+        
     }
-
+    /*
+   * Metodo del servidor web que recibe la solicitud para obtener los conductores disponibles
+   * Parametros: ninguno 
+   * Realiza una llamada a la gestion de pilotos para obtener los disponibles
+   */ 
     [WebMethod]
-    public string HelloWorld() {
-        return "Hola a todos";
+    public string ObtenerConductoresDisponibles() {
+        return _pilotosActuales.ObtenerPilotosDisponibles();
     }
-    
+
+    /*
+   * Metodo del servidor web que recibe la solicitud de cambiar el estado de un piloto
+   * Parametros: *codigoPiloto --> tipo entero que contiene el codigo del piloto a cambiar el estado
+   * Realiza una llamada a la gestion de pilotos para cambiar el estado del piloto
+   */
+    [WebMethod]
+    public void OcuparPiloto(int codigoPiloto)
+    {
+        _pilotosActuales.OcuparPiloto(codigoPiloto);
+    }
 }

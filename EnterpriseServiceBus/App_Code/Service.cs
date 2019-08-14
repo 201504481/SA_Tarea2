@@ -6,25 +6,47 @@ using System.Web.Services;
 
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-// Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
-// [System.Web.Script.Services.ScriptService]
 
 public class Service : System.Web.Services.WebService
 {
-    public Service () {
+    // Instancia de variables globales, guion bajo al principio como estandard de codigo
 
-        //Elimine la marca de comentario de la línea siguiente si utiliza los componentes diseñados 
-        //InitializeComponent(); 
-    }
+    // Instancia de servidor de rastreo
+    ServidorRastreo.ServiceSoapClient _rastreo = new ServidorRastreo.ServiceSoapClient();
+    // Instancia de servidor de pilotos
+    ServidorPiloto.ServiceSoapClient _pilotos = new ServidorPiloto.ServiceSoapClient();
 
+    /*
+    * Metodo del servidor web que recibe la solicitud de viaje de un cliente
+    * Parametros: *zona --> tipo entero que cotiene la zona actual del cliente 
+    * Realiza una llamada al servidor de rastreos para obtener la propuesta del piloto mas cercano
+    */ 
     [WebMethod]
-    public string HelloWorld() {
-        return "Hola a todos";
-    }
-
-    [WebMethod]
-    public string SolicitudViajeCliente(int zona)
+    public String SolicitudViajeCliente(int zona)
     {
-        return "Hola a todos";
+        return _rastreo.ObtenerPropuestaPiloto(zona);
+    }
+
+    /*
+    * Metodo del servidor web que recibe la solicitud de pilotos disponibles 
+    * Parametros: ninguno 
+    * Realiza una llamada al servidor de pilotos para obtener la lista de conductores disponibles
+    */ 
+    [WebMethod]
+    public string SolicitudPilotosDisponibles()
+    {
+        
+        return _pilotos.ObtenerConductoresDisponibles();
+    }
+
+    /*
+    * Metodo del servidor web que recibe la solicitud de modificar el estado de un piloto a ocupado
+    * Parametros: *codigoPiloto --> entero que contiene el codigo unico del piloto a cambiar el estado 
+    * Realiza una llamada al servidor de pilotos para modificar el estado del piloto
+    */ 
+    [WebMethod]
+    public void OcuparPiloto(int codigoPiloto) 
+    {
+        _pilotos.OcuparPiloto(codigoPiloto);
     }
 }

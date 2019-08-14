@@ -19,6 +19,8 @@ public class Service : System.Web.Services.WebService
 
     [WebMethod]
     public string HelloWorld() {
+        GestionCliente a = new GestionCliente();
+        a.SolicitarViaje();
         return "Hola a todos";
     }
     
