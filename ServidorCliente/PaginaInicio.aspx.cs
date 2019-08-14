@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class PaginaInicio : System.Web.UI.Page
 {
+    // Instancia del bus de servidor 
+    ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -19,7 +21,6 @@ public partial class PaginaInicio : System.Web.UI.Page
     */
     protected void btnSolicitudViaje_Click(object sender, EventArgs e)
     {
-        ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
         // Conversion de la zona ingresada en el campo zona
         int zonacliente = Int32.Parse(txtZona.Text);
         // Ingreso o registro del usuario

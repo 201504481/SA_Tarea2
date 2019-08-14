@@ -11,6 +11,8 @@ public class GestionRastreo
     
     // Declaracion de variables globales
 
+    // Instancia al bus de servidor
+    ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
     // Declaracion de lista que contendra los pilotos disponibles actuales
     LinkedList<EntidadPiloto> _pilotosDisponibles;
     // Declaracion de un random, por motivos del demo
@@ -25,8 +27,6 @@ public class GestionRastreo
     {
         // Instancia de una nueva lista de pilotos disponibles
         _pilotosDisponibles = new LinkedList<EntidadPiloto>();
-        // Instancia del servidor de bus
-        ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
         // Peticion al ESB con todos los pilotos disponibles
         String cadena = esb.SolicitudPilotosDisponibles();
         // Analizador para obtener todos los datos de los pilotos disponibles 
@@ -105,8 +105,7 @@ public class GestionRastreo
     */
     public void OcuparPiloto(int codigoPiloto) 
     {
-        // Instancia al bus de servidor
-        ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
+        
         // Peticion al bus de servidor
         esb.OcuparPiloto(codigoPiloto);
     }
