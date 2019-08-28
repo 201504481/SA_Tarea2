@@ -23,8 +23,8 @@ public class Service_Piloto : System.Web.Services.WebService
    * Realiza una llamada a la gestion de pilotos para obtener los disponibles
    */ 
     [WebMethod]
-    public string ObtenerConductoresDisponibles() {
-        return _pilotosActuales.ObtenerPilotosDisponibles();
+    public string ObtenerConductoresDisponibles(string placa) {
+        return _pilotosActuales.ObtenerInformacion(placa);
     }
 
     /*

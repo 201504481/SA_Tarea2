@@ -60,6 +60,6 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
     {
-        return _clientes.IngresoCliente(nombreUsuario, zonaActual);
+        return true
     }
 }

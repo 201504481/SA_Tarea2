@@ -27,24 +27,40 @@ public class GestionRastreo
     {
         // Instancia de una nueva lista de pilotos disponibles
         _pilotosDisponibles = new LinkedList<EntidadPiloto>();
-        // Peticion al ESB con todos los pilotos disponibles
-        String cadena = esb.SolicitudPilotosDisponibles();
-        // Analizador para obtener todos los datos de los pilotos disponibles 
-        /* Ejemplo de cadena:<codigoPiloto>;<zona>
-        *  111;1
-        *  222;2
-        */
 
-        String[] pilotos = cadena.Split('\n');
-        for (int posicion = 0; posicion < pilotos.Length - 1; posicion++)
+        _pilotosDisponibles.AddLast(new EntidadPiloto("123ABC", 1));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("456DEF", 2));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("789GHI", 3));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("123JKL", 4));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("456MNO", 5));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("789PQR", 6));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("124STU", 7));
+        _pilotosDisponibles.AddLast(new EntidadPiloto("456VWX", 8));
+    }
+
+
+    public String ObtenerInformacion(int zona) {
+        int zonaActual = _pilotosDisponibles.ElementAt(0).GetZonaCubierta();
+        // Ciclo iterador para recorrer todos los pilotos disponibles
+        foreach (EntidadPiloto piloto in _pilotosDisponibles)
         {
-            String piloto = pilotos[posicion];
-            String[] datosPiloto = piloto.Split(';');
-            int codigo = Int32.Parse(datosPiloto[0]);
-            int zona = Int32.Parse(datosPiloto[1]);
-            // Insercion del piloto conn todos sus datos
-            _pilotosDisponibles.AddLast(new EntidadPiloto(codigo, zona));
+            int zonaAux = piloto.GetZonaCubierta();
+            int diferenciaActual = zonaActual > zona ? zonaActual - zona : zona - zonaActual;
+            int diferenciaNueva = zonaAux > zona ? zonaAux - zona : zona - zonaAux;
+
+            if (diferenciaNueva < diferenciaActual) {
+                zonaActual = zonaAux;
+            }
         }
+
+        foreach (EntidadPiloto piloto in _pilotosDisponibles)
+        {
+            if (piloto.GetZonaCubierta() == zonaActual)
+            {
+                return piloto.GetPlaca();
+            }
+        }
+        return "000000";
     }
 
     /*
@@ -77,9 +93,9 @@ public class GestionRastreo
                 }
             }
             // Peticion al ESB para marcar como ocupado el conductor elegido
-            OcuparPiloto(_pilotosDisponibles.ElementAt(posicionActual).GetCodigoPiloto());
+            
             // Mensaje de retorno con la informacion del nuevo conductor
-            return "Piloto mas cercano: " + _pilotosDisponibles.ElementAt(posicionActual).GetCodigoPiloto() + "\n" +
+            return "Piloto mas cercano: "  + "\n" +
                 " Se encuentra en zona:" + zonaActual + " El precio actual es de: " + CalculoPrecio(zona, zonaActual);
         }
         // Mensaje de retorno que no existen conductores disponibles

@@ -2,43 +2,22 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ServicioCliente.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ServicioCliente.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://ServicioCliente.org/">
-      <s:element name="IngresoCliente">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="nombreUsuario" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="zonaActual" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="IngresoClienteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="IngresoClienteResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="PeticionIni">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="zonaCliente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="PeticionIniResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PeticionIniResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeticionIniResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="IngresoClienteSoapIn">
-    <wsdl:part name="parameters" element="tns:IngresoCliente" />
-  </wsdl:message>
-  <wsdl:message name="IngresoClienteSoapOut">
-    <wsdl:part name="parameters" element="tns:IngresoClienteResponse" />
-  </wsdl:message>
   <wsdl:message name="PeticionIniSoapIn">
     <wsdl:part name="parameters" element="tns:PeticionIni" />
   </wsdl:message>
@@ -46,10 +25,6 @@
     <wsdl:part name="parameters" element="tns:PeticionIniResponse" />
   </wsdl:message>
   <wsdl:portType name="Service_ClienteSoap">
-    <wsdl:operation name="IngresoCliente">
-      <wsdl:input message="tns:IngresoClienteSoapIn" />
-      <wsdl:output message="tns:IngresoClienteSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="PeticionIni">
       <wsdl:input message="tns:PeticionIniSoapIn" />
       <wsdl:output message="tns:PeticionIniSoapOut" />
@@ -57,15 +32,6 @@
   </wsdl:portType>
   <wsdl:binding name="Service_ClienteSoap" type="tns:Service_ClienteSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="IngresoCliente">
-      <soap:operation soapAction="http://ServicioCliente.org/IngresoCliente" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="PeticionIni">
       <soap:operation soapAction="http://ServicioCliente.org/PeticionIni" style="document" />
       <wsdl:input>
@@ -78,15 +44,6 @@
   </wsdl:binding>
   <wsdl:binding name="Service_ClienteSoap12" type="tns:Service_ClienteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="IngresoCliente">
-      <soap12:operation soapAction="http://ServicioCliente.org/IngresoCliente" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="PeticionIni">
       <soap12:operation soapAction="http://ServicioCliente.org/PeticionIni" style="document" />
       <wsdl:input>

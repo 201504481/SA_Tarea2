@@ -27,7 +27,7 @@ public class Service_Rastreo : System.Web.Services.WebService
     public String ObtenerPropuestaPiloto(int zona) 
     {
         _gestionRastreo.ObtencionPilotosDisponibles();
-        return _gestionRastreo.PropuestaPiloto(zona);
+        return _gestionRastreo.ObtenerInformacion(zona);
     }
     
 }

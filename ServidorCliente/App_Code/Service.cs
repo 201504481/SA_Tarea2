@@ -21,20 +21,11 @@ public class Service_Cliente : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
-    /*
-    * Metodo del servidor web que recibe la solicitud el ingreso de un cliente
-    * Parametros: *nombreUsuario --> cadena que contiene el nombre del usuario
-    *             *zonaActual    --> entero que contiene la zona actual del usuario que intenta registrarse 
-    */
-    [WebMethod]
-    public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
-    {
-        return _clientes.IngresoRegistroCliente(nombreUsuario, zonaActual);
-    }
+
 
     [WebMethod]
-    public String PeticionIni(int zonaCliente) {
-        return esb.SolicitudViajeCliente(zonaCliente);
+    public int PeticionIni(string nombre) {
+        return _clientes.ObtenerZonaUsuario(nombre);
     }
     
 }

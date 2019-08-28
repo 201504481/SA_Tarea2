@@ -12,6 +12,9 @@ public class GestionPiloto
 
     // Declaracion de lista con todos los pilotos disponibles
     private LinkedList<EntidadPiloto> _listaPilotos;
+    // Declaracion de un random, por motivos del demo
+    Random _rnd = new Random();
+
 
     /*
     * Constructor para la gestion de pilotos
@@ -20,14 +23,14 @@ public class GestionPiloto
     */
     public GestionPiloto() {
         _listaPilotos = new LinkedList<EntidadPiloto>();
-        AgregarPiloto(new EntidadPiloto(111, EntidadPiloto.Tipo_Estado.DISPONIBLE, 1));
-        AgregarPiloto(new EntidadPiloto(222, EntidadPiloto.Tipo_Estado.DISPONIBLE, 2));
-        AgregarPiloto(new EntidadPiloto(333, EntidadPiloto.Tipo_Estado.DISPONIBLE, 3));
-        AgregarPiloto(new EntidadPiloto(444, EntidadPiloto.Tipo_Estado.DISPONIBLE, 4));
-        AgregarPiloto(new EntidadPiloto(555, EntidadPiloto.Tipo_Estado.DISPONIBLE, 5));
-        AgregarPiloto(new EntidadPiloto(666, EntidadPiloto.Tipo_Estado.DISPONIBLE, 6));
-        AgregarPiloto(new EntidadPiloto(777, EntidadPiloto.Tipo_Estado.DISPONIBLE, 7));
-        AgregarPiloto(new EntidadPiloto(888, EntidadPiloto.Tipo_Estado.DISPONIBLE, 8));
+        AgregarPiloto(new EntidadPiloto("123ABC", EntidadPiloto.Tipo_Estado.DISPONIBLE, 1,"Julio Arango"));
+        AgregarPiloto(new EntidadPiloto("456DEF", EntidadPiloto.Tipo_Estado.DISPONIBLE, 2, "Julia Sierra"));
+        AgregarPiloto(new EntidadPiloto("789GHI", EntidadPiloto.Tipo_Estado.DISPONIBLE, 3, "Alba Chinchilla"));
+        AgregarPiloto(new EntidadPiloto("123JKL", EntidadPiloto.Tipo_Estado.DISPONIBLE, 4, "Gustavo Cruz"));
+        AgregarPiloto(new EntidadPiloto("456MNO", EntidadPiloto.Tipo_Estado.DISPONIBLE, 5, "Daniel Garcia"));
+        AgregarPiloto(new EntidadPiloto("789PQR", EntidadPiloto.Tipo_Estado.DISPONIBLE, 6, "Juan Carlos"));
+        AgregarPiloto(new EntidadPiloto("124STU", EntidadPiloto.Tipo_Estado.DISPONIBLE, 7, "Lupita Godinez"));
+        AgregarPiloto(new EntidadPiloto("456VWX", EntidadPiloto.Tipo_Estado.DISPONIBLE, 8, "Edgar Arriola"));
     }
 
     /*
@@ -39,24 +42,20 @@ public class GestionPiloto
         _listaPilotos.AddLast(piloto);
     }
 
-    /*
-    * Metodo para la obtencion de pilotod disponibles
-    * Parametros: ninguno
-    * Recorre todos los pilotos y concatena todos los disponibles en una sola cadena
-    * Retorna la cadena con los pilotos disponibles 
-    */
-    public String ObtenerPilotosDisponibles() {
-        String contenidoPilotos = "";
-        // Ciclo iterador para recorrer todos los pilotos disponibles
-        foreach (EntidadPiloto piloto in _listaPilotos) {
-            // Verificacion si el piloto actual esta disponible
-            if(piloto.GetEstado() == EntidadPiloto.Tipo_Estado.DISPONIBLE)
+
+    public String ObtenerInformacion(string placa) {
+
+        foreach (EntidadPiloto piloto in _listaPilotos)
+        {
+            if (piloto.GetPlaca() == placa)
             {
-                // Concatenacion de la informacion del piloto disponible
-                contenidoPilotos += piloto.GetCodigoPiloto() + ";" + piloto.GetZonaCubierta() + "\n";
+                return "Nombre Piloto: " + piloto.GetNombre() + "\n" +
+                    "Placa Carro: " + piloto.GetPlaca() + "\n" +
+                    "Zona Actual: " + piloto.GetZonaCubierta() + "\n" +
+                    "Tiempo Estimado: " + _rnd.Next(1, 15); 
             }
         }
-        return contenidoPilotos;
+        return "Sin pilotos disponibles";
     }
 
     /*
@@ -69,13 +68,7 @@ public class GestionPiloto
         // Ciclo iterador para recorrer todos los pilotos disponibles
         foreach (EntidadPiloto piloto in _listaPilotos)
         {
-            // Verificacion si el piloto actual corresponde al codigo mandado
-            if (piloto.GetCodigoPiloto() == codigo)
-            {
-                // Modificacion del estado del piloto
-                piloto.SetEstado(EntidadPiloto.Tipo_Estado.OCUPADO);
-                break;
-            }
+           
         }
     }
 }

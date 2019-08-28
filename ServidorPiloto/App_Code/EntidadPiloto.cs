@@ -18,11 +18,12 @@ public class EntidadPiloto
     // Declaracion de atributos necesarios para piloto
 
     // Declaracion de ccodigo de piloto, codigo unico y representativo
-    private int _codigoPiloto;
+    private string _placa;
     // Declaracion del tipo de estado en el que se encuentra el piloto
     private Tipo_Estado _estado;
     // declaracion de la zona cubierta por el piloto actualmente
     private int _zonaCubierta;
+    private string _nombre;
 
     /*
     * Constructor para la entidad de pilotos
@@ -30,22 +31,33 @@ public class EntidadPiloto
     *             *estado       --> tipo de estado en el que se encuentra el piloto
     *             *zonaCubierta --> entero que representa la zona cubierta por el piloto
     */
-    public EntidadPiloto(int codigoPiloto, Tipo_Estado estado, int zonaCubierta)
+    public EntidadPiloto(string placa, Tipo_Estado estado, int zonaCubierta, string nombre)
     {
-        _codigoPiloto = codigoPiloto;
+        _placa = placa;
         _estado = estado;
         _zonaCubierta = zonaCubierta;
+        _nombre = nombre;
     }
 
     // Encapsulamiento de los atributos de piloto
-    public int GetCodigoPiloto()
+    public string GetNombre()
     {
-        return _codigoPiloto;
+        return _nombre;
     }
 
-    public void SetCodigoPiloto(int codigoPiloto)
+    public void SetNombre(string nombre)
     {
-        _codigoPiloto = codigoPiloto;
+        _nombre = nombre;
+    }
+
+    public string GetPlaca()
+    {
+        return _placa;
+    }
+
+    public void SetPlaca(string placa)
+    {
+        _placa = placa;
     }
 
     public Tipo_Estado GetEstado()

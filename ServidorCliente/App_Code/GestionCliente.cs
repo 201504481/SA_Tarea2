@@ -22,6 +22,12 @@ public class GestionCliente
     */
     public GestionCliente() {
         _listaClientes = new LinkedList<EntidadCliente>();
+        _listaClientes.AddLast(new EntidadCliente("Julius1525", 5));
+        _listaClientes.AddLast(new EntidadCliente("Maxito15", 7));
+        _listaClientes.AddLast(new EntidadCliente("FidoDido", 10));
+        _listaClientes.AddLast(new EntidadCliente("RositaMargarita", 2));
+        _listaClientes.AddLast(new EntidadCliente("Julian25", 3));
+
     }
 
     /*
@@ -29,19 +35,15 @@ public class GestionCliente
     * Parametros: ninguno 
     * Retorna la zona del usuario con sesion activa
     */
-    public int ObtenerZonaUsuario() 
+    public int ObtenerZonaUsuario(string nombre) 
     {
-        // Verificacion si existe un cliente activo
-        if (_clienteActivo != null) 
+        foreach (EntidadCliente cliente in _listaClientes)
         {
-            // Retorno de la zona del cliente con sesion activa
-            return _clienteActivo.GetZonaActual();
+            if (cliente.GetNombreUsuario() == nombre) {
+                return cliente.GetZonaActual();
+            }
         }
-        else 
-        {
-            // Retorno de una zona inexistente debido a que no existe sesion activa
-            return -1;   
-        }   
+        return 0;
     }
 
     /*

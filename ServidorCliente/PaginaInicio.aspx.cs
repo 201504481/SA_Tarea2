@@ -26,6 +26,6 @@ public partial class PaginaInicio : System.Web.UI.Page
         // Ingreso o registro del usuario
         Service_Cliente._clientes.IngresoRegistroCliente(txtNombre.Text, zonacliente);
         // Peticion al bus de servidor para la solicitud del viaje
-        Respuesta.Text = esb.SolicitudViajeCliente(Service_Cliente._clientes.ObtenerZonaUsuario());
+
     }
 }

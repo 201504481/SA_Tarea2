@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <nextCatalog catalog="nbproject/private/retriever/catalog.xml"/>
-    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorCliente/Service_Cliente.wsdl" uri="../Referencias/ServidorCliente/Service_Cliente.wsdl"/>
-    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorPiloto/Service_Piloto.wsdl" uri="../Referencias/ServidorPiloto/Service_Piloto.wsdl"/>
-    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorRastreo/Service_Rastreo.wsdl" uri="../Referencias/ServidorRastreo/Service_Rastreo.wsdl"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorCliente/Service_Cliente.wsdl" uri="src/Service_Cliente.wsdl"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorPiloto/Service_Piloto.wsdl" uri="src/Service_Piloto.wsdl"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorRastreo/Service_Rastreo.wsdl" uri="src/Service_Rastreo.wsdl"/>
 </catalog>
