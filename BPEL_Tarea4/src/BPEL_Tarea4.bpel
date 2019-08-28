@@ -10,15 +10,14 @@
     xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
     xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
     xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling">
-   <import namespace="http://enterprise.netbeans.org/bpel/Service-ClienteWrapper" location="Service-ClienteWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <import namespace="http://tempuri.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorCliente/Service-Cliente.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <import namespace="http://enterprise.netbeans.org/bpel/Service-PilotoWrapper" location="Service-PilotoWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <import namespace="http://tempuri.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorPiloto/Service-Piloto.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <import namespace="http://enterprise.netbeans.org/bpel/Service-RastreoWrapper" location="Service-RastreoWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <import namespace="http://tempuri.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorRastreo/Service-Rastreo.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-   <partnerLinks>
-      <partnerLink name="PartnerLink2" xmlns:tns="http://enterprise.netbeans.org/bpel/Service-PilotoWrapper" partnerLinkType="tns:ServiceSoapLinkType" partnerRole="ServiceSoapRole"/>
-      <partnerLink name="LinkCliente" xmlns:tns="http://enterprise.netbeans.org/bpel/Service-ClienteWrapper" partnerLinkType="tns:ServiceSoapLinkType" myRole="ServiceSoapRole"/>
-      <partnerLink name="LinkRastreo" xmlns:tns="http://enterprise.netbeans.org/bpel/Service-RastreoWrapper" partnerLinkType="tns:ServiceSoapLinkType" myRole="ServiceSoapRole"/>
-   </partnerLinks>
+    <import namespace="http://enterprise.netbeans.org/bpel/Service_ClienteWrapper" location="Service_ClienteWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://ServicioCliente.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorCliente/Service_Cliente.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/Service_PilotoWrapper" location="Service_PilotoWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://ServicioPiloto.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorPiloto/Service_Piloto.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="LinkCliente" xmlns:tns="http://enterprise.netbeans.org/bpel/Service_ClienteWrapper" partnerLinkType="tns:Service_ClienteSoapLinkType" myRole="Service_ClienteSoapRole"/>
+        <partnerLink name="LinkPiloto" xmlns:tns="http://enterprise.netbeans.org/bpel/Service_PilotoWrapper" partnerLinkType="tns:Service_PilotoSoapLinkType" myRole="Service_PilotoSoapRole"/>
+    </partnerLinks>
+    <sequence>
+   </sequence>
 </process>

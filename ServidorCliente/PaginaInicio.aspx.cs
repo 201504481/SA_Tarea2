@@ -24,8 +24,8 @@ public partial class PaginaInicio : System.Web.UI.Page
         // Conversion de la zona ingresada en el campo zona
         int zonacliente = Int32.Parse(txtZona.Text);
         // Ingreso o registro del usuario
-        Service._clientes.IngresoRegistroCliente(txtNombre.Text, zonacliente);
+        Service_Cliente._clientes.IngresoRegistroCliente(txtNombre.Text, zonacliente);
         // Peticion al bus de servidor para la solicitud del viaje
-        Respuesta.Text = esb.SolicitudViajeCliente(Service._clientes.ObtenerZonaUsuario());
+        Respuesta.Text = esb.SolicitudViajeCliente(Service_Cliente._clientes.ObtenerZonaUsuario());
     }
 }

@@ -12,11 +12,11 @@ public class Service : System.Web.Services.WebService
     // Instancia de variables globales, guion bajo al principio como estandard de codigo
 
     // Instancia de servidor de rastreo
-    ServidorRastreo.ServiceSoapClient _rastreo = new ServidorRastreo.ServiceSoapClient();
+    ServidorRastreo.Service_RastreoSoapClient _rastreo = new ServidorRastreo.Service_RastreoSoapClient();
     // Instancia de servidor de pilotos
-    ServidorPiloto.ServiceSoapClient _pilotos = new ServidorPiloto.ServiceSoapClient();
+    ServidorPiloto.Service_PilotoSoapClient _pilotos = new ServidorPiloto.Service_PilotoSoapClient();
     // Instancia de servidor de clientes
-    ServidorCliente.ServiceSoapClient _clientes = new ServidorCliente.ServiceSoapClient();
+    ServidorCliente.Service_ClienteSoapClient _clientes = new ServidorCliente.Service_ClienteSoapClient();
 
     /*
     * Metodo del servidor web que recibe la solicitud de viaje de un cliente

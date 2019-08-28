@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-[WebService(Namespace = "http://tempuri.org/")]
+[WebService(Namespace = "http://ServicioPiloto.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
 // [System.Web.Script.Services.ScriptService]
 
-public class Service : System.Web.Services.WebService
+public class Service_Piloto : System.Web.Services.WebService
 {
     GestionPiloto _pilotosActuales = new GestionPiloto();
 
-    public Service () {
+    public Service_Piloto()
+    {
         
     }
     /*

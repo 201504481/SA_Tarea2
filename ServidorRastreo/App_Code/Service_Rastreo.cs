@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-[WebService(Namespace = "http://tempuri.org/")]
+[WebService(Namespace = "http://ServicioRastreo.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 
 
-public class Service : System.Web.Services.WebService
+public class Service_Rastreo : System.Web.Services.WebService
 {
     GestionRastreo _gestionRastreo = new GestionRastreo();
-    public Service () 
+    public Service_Rastreo() 
     {
 
         //Elimine la marca de comentario de la línea siguiente si utiliza los componentes diseñados 

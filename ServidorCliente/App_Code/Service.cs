@@ -4,17 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-[WebService(Namespace = "http://tempuri.org/")]
+[WebService(Namespace = "http://ServicioCliente.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
 // [System.Web.Script.Services.ScriptService]
 
-public class Service : System.Web.Services.WebService
+public class Service_Cliente : System.Web.Services.WebService
 {
     // Instancia de la gestion de clientes utilizada para toda la sesion.
     public static GestionCliente _clientes = new GestionCliente();
+    ESB.ServiceSoapClient esb = new ESB.ServiceSoapClient();
 
-    public Service () {
+    public Service_Cliente()
+    {
         //Elimine la marca de comentario de la línea siguiente si utiliza los componentes diseñados 
         //InitializeComponent(); 
     }
@@ -28,6 +30,11 @@ public class Service : System.Web.Services.WebService
     public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
     {
         return _clientes.IngresoRegistroCliente(nombreUsuario, zonaActual);
+    }
+
+    [WebMethod]
+    public String PeticionIni(int zonaCliente) {
+        return esb.SolicitudViajeCliente(zonaCliente);
     }
     
 }
