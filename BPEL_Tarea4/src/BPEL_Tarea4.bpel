@@ -14,10 +14,25 @@
     <import namespace="http://ServicioCliente.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorCliente/Service_Cliente.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <import namespace="http://enterprise.netbeans.org/bpel/Service_PilotoWrapper" location="Service_PilotoWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <import namespace="http://ServicioPiloto.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorPiloto/Service_Piloto.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/Service_RastreoWrapper" location="Service_RastreoWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://ServicioRastreo.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/Referencias/ServidorRastreo/Service_Rastreo.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <partnerLinks>
         <partnerLink name="LinkCliente" xmlns:tns="http://enterprise.netbeans.org/bpel/Service_ClienteWrapper" partnerLinkType="tns:Service_ClienteSoapLinkType" myRole="Service_ClienteSoapRole"/>
         <partnerLink name="LinkPiloto" xmlns:tns="http://enterprise.netbeans.org/bpel/Service_PilotoWrapper" partnerLinkType="tns:Service_PilotoSoapLinkType" myRole="Service_PilotoSoapRole"/>
+        <partnerLink name="LinkRastreo" xmlns:tns="http://enterprise.netbeans.org/bpel/Service_RastreoWrapper" partnerLinkType="tns:Service_RastreoSoapLinkType" myRole="Service_RastreoSoapRole"/>
     </partnerLinks>
+    <variables>
+        <variable name="PeticionIniOut" xmlns:tns="http://ServicioCliente.org/" messageType="tns:PeticionIniSoapOut"/>
+        <variable name="zonaCliente" xmlns:tns="http://ServicioCliente.org/" messageType="tns:PeticionIniSoapIn"/>
+    </variables>
     <sequence>
-   </sequence>
+        <receive name="ReciboPeticionInicial" createInstance="yes" partnerLink="LinkCliente" operation="PeticionIni" xmlns:tns="http://ServicioCliente.org/" portType="tns:Service_ClienteSoap" variable="zonaCliente"/>
+        <assign name="Assign1">
+            <copy>
+                <from>concat('Hello', $zonaCliente.parameters)</from>
+                <to variable="PeticionIniOut" part="parameters"/>
+            </copy>
+        </assign>
+        <reply name="PruebaRespuesta1" partnerLink="LinkCliente" operation="PeticionIni" xmlns:tns="http://ServicioCliente.org/" portType="tns:Service_ClienteSoap" variable="PeticionIniOut"/>
+    </sequence>
 </process>
