@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<process
+    name="bpelModule1"
+    targetNamespace="http://enterprise.netbeans.org/bpel/BpelModule1/bpelModule1"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/BpelModule1/bpelModule1"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
+    xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling">
+    <import namespace="http://enterprise.netbeans.org/bpel/Service-ClienteWrapper" location="Service-ClienteWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://tempuri.org/" location="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorCliente/Service-Cliente.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <sequence>
+        <invoke name="Invoke1">
+            <catchAll/>
+        </invoke>
+    </sequence>
+</process>

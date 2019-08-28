@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <nextCatalog catalog="nbproject/private/retriever/catalog.xml"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorCliente/Service-Cliente.wsdl" uri="../EnterpriseServiceBus/App_WebReferences/ServidorCliente/Service-Cliente.wsdl"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorPiloto/Service-Piloto.wsdl" uri="../EnterpriseServiceBus/App_WebReferences/ServidorPiloto/Service-Piloto.wsdl"/>
+    <system systemId="file:/C:/Users/eljul/Documents/GitHub/SA_Tarea2/EnterpriseServiceBus/App_WebReferences/ServidorRastreo/Service-Rastreo.wsdl" uri="../EnterpriseServiceBus/App_WebReferences/ServidorRastreo/Service-Rastreo.wsdl"/>
 </catalog>
