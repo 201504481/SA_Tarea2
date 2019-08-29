@@ -4,11 +4,11 @@
     xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
   <SOAP-ENV:Body>
     <m:EntradaOperationResponse xmlns:m="App_T4" xmlns:msgns="http://j2ee.netbeans.org/wsdl/BPEL_T4/src/Entrada">
-      <respuesta>Bienvenido Maxito15 los datos de su viaje son: 
-Nombre Piloto: Lupita Godinez
-Placa Carro: 124STU
-Zona Actual: 7
-Tiempo Estimado: 81</respuesta>
+      <respuesta>Bienvenido RositaMargarita los datos de su viaje son: 
+Nombre Piloto: Julia Sierra
+Placa Carro: 456DEF
+Zona Actual: 2
+Tiempo Estimado: 111</respuesta>
     </m:EntradaOperationResponse>
   </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>

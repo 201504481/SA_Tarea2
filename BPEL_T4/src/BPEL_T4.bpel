@@ -58,7 +58,7 @@
         <invoke name="Invoke3" partnerLink="LinkPiloto" operation="ObtenerConductoresDisponibles" xmlns:tns="http://WS/" portType="tns:ServicioPiloto" inputVariable="ObtenerConductoresDisponiblesIn" outputVariable="ObtenerConductoresDisponiblesOut"/>
         <assign name="Assign4">
             <copy>
-                <from>$ObtenerConductoresDisponiblesOut.parameters/return</from>
+                <from>concat('Bienvenido ', $EntradaOperationIn.nombre, ' los datos de su viaje son: ', $ObtenerConductoresDisponiblesOut.parameters/return)</from>
                 <to variable="EntradaOperationOut" part="respuesta"/>
             </copy>
         </assign>
