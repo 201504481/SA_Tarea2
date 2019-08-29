@@ -44,40 +44,27 @@ El servicio de pilotos contiene los atributos de código de piloto, el cual seri
 El servicio de rastreo es el mas importante, este servicio le pide al ESB todos los pilotos disponibles y con esta información es el encargado de realizar todos los cálculos de que piloto es el mejor, cual seria el precio y retornar los datos de todo esto al ESB
 
 # Interacción servicios con ESB
-Nuestro enterprise service bus es el orquestador de todos nuestros micro-servicios, por esto se encuentras multiples interacciones de los servicios con el ESB y el ESB con los servicios y ninguna interacción entre servicios, las principales son:
-## ESB
-
-### SolicitudViajeCliente
-Función alojada en el ESB, lo que recibe es una solicitud de viaje con una zona de ubicación y este realiza una petición al servidor de rastreo por medio de ObtenerPropuestaPiloto, mandando de parámetro la misma zona recibida.
-### SolicitudPilotosDisponibles
-Función alojada en el ESB, lo que recibe es una solicitud de un servidor para obtener todos los pilotos con estado disponible, por lo cual este realiza una petición al servicio de pilotos por medio de ObtenerConductoresDisponibles para que le devuelva todos los pilotos con estado disponible. 
-### IngresoCliente
-Función alojada en el ESB, recibe una solicitud para iniciar una sesión con un usuario, recibe de parámetro el nombre de usuario y la zona donde se ubica actualmente el usuario, el ESB realiza una petición al servidor de usuarios para la inserción por medio de IngresoCliente.
-### OcuparPiloto
-unción alojada en el ESB, recibe una solicitud para marcar como ocupado un piloto y este manda la petición al servicio de pilotos por medio de OcuparPiloto.
+Nuestro enterprise service bus es el orquestador de todos nuestros micro-servicios, por esto se encuentras múltiples interacciones de los servicios con el ESB y el ESB con los servicios y ninguna interacción entre servicios, las principales son:
 
 ## Servidor Cliente
 
 ### IngresoCliente
 Función alojada en el servidor de cliente, lo que recibe es una petición de ingreso por medio del ESB y este actualiza el usuario con la sesión actual iniciada.
 
-## Servidor Piloto
-### ObtenerConductoresDisponibles
-Función alojada en el servidor de pilotos, lo que recibe es una petición del ESB para obtener todos los conductores cuyo estado esta disponible, devuelve una cadena con el siguiente formato: 
-```git
-Sintaxis: <CodPiloto>;<Zona>
-
-111;1
-222;2
-333;3
-444;4
-```
-### OcuparPiloto
-Función alojada en el servidor de pilotos, lo que recibe es una petición desde el ESB para cambiar de estado un piloto, recibe de parámetro el código del piloto y este lo cambia a ocupado.
-
 ## Servidor Rastreo
 ### ObtenerPropuestaPiloto
-Función alojada en el servidor de rastreo, lo que recibe es una petición desde el ESB para hacer todos los cálculos necesarios para obtener al mejor piloto, esta función entre todo su algoritmo va a pedir al ESB el listado de pilotos disponibles y con ese listado hace el análisis de cual es el que queda mas cerca de la zona dada.
+Función alojada en el servidor de rastreo, lo que recibe es una petición desde el ESB para hacer todos los cálculos necesarios para obtener al mejor piloto, esta función entre todo su algoritmo va a pedir al ESB el listado de pilotos disponibles y con ese listado hace el análisis de cual es el que queda mas cerca de la zona dada, retornando la placa del piloto para hacer una llamada a toda la información del piloto.
+
+## Servidor Piloto
+### ObtenerInformacion 
+Función alojada en el servidor de pilotos, donde recibe de parámetro la placa del piloto y recupera toda la información necesaria para el viaje, como nombre del piloto, placa del vehículo y tiempo estimado en llegar.
+
+## Orquestado BPEL
+Para la orquestación de estos microservicios se utilizo un BPEL con la herramienta de OpenESB y para realizar distintas pruebas se uso una composición de aplicaciones, la arquitectura llevada en el BPEL es la siguiente: 
+
+![Arquitectura_BPEL](https://github.com/201504481/SA_Tarea2/blob/Tarea4/img/Arquitectura_BPEL.png)
+
+Donde se utilizo conexión con los 3 microservicios y se simulo con otro wsdl, propio de OpenESB, las peticiones del usuario.
 
 # Copyright
 
