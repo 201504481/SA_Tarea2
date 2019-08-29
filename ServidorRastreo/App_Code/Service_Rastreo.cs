@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-[WebService(Namespace = "http://ServicioRastreo.org/")]
+[WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 
 

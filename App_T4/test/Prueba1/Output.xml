@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <m:EntradaOperationResponse xmlns:m="App_T4" xmlns:msgns="http://j2ee.netbeans.org/wsdl/BPEL_T4/src/Entrada">
+      <respuesta xmlns:msgns="http://WS/" xmlns:ns0="http://j2ee.netbeans.org/wsdl/BPEL_T4/src/Entrada">
+Nombre Piloto: Daniel Garcia
+Placa Carro: 456MNO
+Zona Actual: 5
+Tiempo Estimado: 21</respuesta>
+    </m:EntradaOperationResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -38,7 +38,7 @@ public class Service : System.Web.Services.WebService
     public string SolicitudPilotosDisponibles()
     {
         
-        return _pilotos.ObtenerConductoresDisponibles();
+        return "";
     }
 
     /*
@@ -60,6 +60,6 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public Boolean IngresoCliente(String nombreUsuario, int zonaActual)
     {
-        return true
+        return true;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ServicioCliente.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ServicioCliente.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://ServicioCliente.org/">
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="PeticionIni">
         <s:complexType>
           <s:sequence>
@@ -16,6 +16,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="HolaMundo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HolaMundoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HolaMundoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="PeticionIniSoapIn">
@@ -24,16 +38,35 @@
   <wsdl:message name="PeticionIniSoapOut">
     <wsdl:part name="parameters" element="tns:PeticionIniResponse" />
   </wsdl:message>
+  <wsdl:message name="HolaMundoSoapIn">
+    <wsdl:part name="parameters" element="tns:HolaMundo" />
+  </wsdl:message>
+  <wsdl:message name="HolaMundoSoapOut">
+    <wsdl:part name="parameters" element="tns:HolaMundoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service_ClienteSoap">
     <wsdl:operation name="PeticionIni">
       <wsdl:input message="tns:PeticionIniSoapIn" />
       <wsdl:output message="tns:PeticionIniSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="HolaMundo">
+      <wsdl:input message="tns:HolaMundoSoapIn" />
+      <wsdl:output message="tns:HolaMundoSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service_ClienteSoap" type="tns:Service_ClienteSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="PeticionIni">
-      <soap:operation soapAction="http://ServicioCliente.org/PeticionIni" style="document" />
+      <soap:operation soapAction="http://tempuri.org/PeticionIni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HolaMundo">
+      <soap:operation soapAction="http://tempuri.org/HolaMundo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -45,7 +78,16 @@
   <wsdl:binding name="Service_ClienteSoap12" type="tns:Service_ClienteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="PeticionIni">
-      <soap12:operation soapAction="http://ServicioCliente.org/PeticionIni" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/PeticionIni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HolaMundo">
+      <soap12:operation soapAction="http://tempuri.org/HolaMundo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
